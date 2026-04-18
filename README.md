@@ -70,11 +70,6 @@ pip install -r requirements.txt
 
 ### 3. Run the simple app
 ```bash
-streamlit run app_simple.py
-```
-
-### 4. Or run the advanced terminal app
-```bash
 streamlit run app.py
 ```
 
@@ -182,7 +177,7 @@ Deployed on Streamlit Cloud — free and accessible worldwide.
 
 ## 👩‍💻 Built By
 
-**Sidra** — Pakistani developer building tools for the local community 🇵🇰
+**Sidra** 
 
 If you found this helpful, please ⭐ star the repo!
 
