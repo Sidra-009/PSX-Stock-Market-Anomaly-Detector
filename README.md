@@ -1,95 +1,190 @@
-# PSX Stock Market Anomaly Detector 🚨📈
+# 🇵🇰 PSX Stock Alerts
+### Simple AI-Powered Stock Helper for Pakistan Stock Exchange
 
-An AI-powered system that detects suspicious trading patterns, pump & dump schemes, and price anomalies on the **Pakistan Stock Exchange (PSX)** — with a **live web dashboard** and **7-day price forecasts**.
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-00d48a?style=flat)
 
-> 🟢 **Live Demo:** [Deploy free on Streamlit Cloud](#deployment)
-
----
-
-## What It Detects
-
-| Signal | Method | Trigger |
-|--------|--------|---------|
-| General anomalies | Isolation Forest (ML) | Top 5% statistical outliers |
-| Price/volume spikes | Z-Score (3σ) | 3 standard deviations from mean |
-| Pump & dump | Rule-based | Price +8% in 3d + Volume 2.5x + RSI > 70 |
-
-## Features
-
-- **Real-time data** — Tries PSX live API, falls back to realistic synthetic data
-- **3 detection models** — Isolation Forest + Z-Score + Pump & Dump rules
-- **7-day price forecast** — Linear Regression on 12 technical indicators
-- **Web dashboard** — Interactive Streamlit app (free deployment)
-- **Email alerts** — Get notified on high-priority anomalies
-- **Alert heatmap** — All 15 stocks at a glance
+> ⚠️ **FOR EDUCATIONAL PURPOSES ONLY — NOT FINANCIAL ADVICE**
+> This tool is built for learning and research. Do NOT use it to make real investment decisions. Always consult a licensed financial advisor.
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
-### Web Dashboard
-![Dashboard](results/dashboard_ENGRO_KA.png)
-
-### Alert Heatmap
-![Heatmap](results/alert_heatmap.png)
-
-### 7-Day Forecast
-![Forecast](results/forecast_ENGRO.png)
+| Stock Details | Alerts & Warnings | Next Week Prediction |
+|---|---|---|
+| Live price, RSI status, price chart | High/Medium/Low priority alerts | AI 7-day forecast chart |
 
 ---
 
-## Quick Start
+## 💡 What Does This App Do?
 
+This is a **beginner-friendly** stock monitoring dashboard for the Pakistan Stock Exchange. No finance degree needed — everything is explained in simple language.
+
+- See the **current price** of 15 major PSX stocks
+- Get **alerts** when something unusual happens (big price jumps, volume spikes)
+- View an **AI prediction** for what might happen next week
+- Understand everything with **simple explanations** — no jargon!
+
+---
+
+## 🏦 Stocks Covered
+
+| Ticker | Company | Sector |
+|---|---|---|
+| ENGRO | Engro Corporation | Chemicals |
+| HBL | HBL Bank | Banking |
+| LUCK | Lucky Cement | Cement |
+| PSO | Pakistan State Oil | Energy |
+| OGDC | OGDC (Gas) | Energy |
+| UBL | UBL Bank | Banking |
+| MCB | MCB Bank | Banking |
+| HUBC | Hub Power | Power |
+| PPL | PPL (Oil) | Energy |
+| MARI | Mari Gas | Energy |
+| MEBL | Meezan Bank | Banking |
+| BAFL | Bank Alfalah | Banking |
+| EFERT | Engro Fertilizer | Fertilizer |
+| FFC | Fauji Fertilizer | Fertilizer |
+| KOHC | Kohat Cement | Cement |
+
+---
+
+## 🚀 How to Run Locally
+
+### 1. Clone the repo
 ```bash
-git clone https://github.com/YOUR_USERNAME/psx-anomaly-detector.git
-cd psx-anomaly-detector
+git clone https://github.com/Sidra-009/PSX-Stock-Market-Anomaly-Detector.git
+cd PSX-Stock-Market-Anomaly-Detector
+```
+
+### 2. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-# Run full pipeline (terminal)
-python main.py
+### 3. Run the simple app
+```bash
+streamlit run app_simple.py
+```
 
-# Run web app (browser)
+### 4. Or run the advanced terminal app
+```bash
 streamlit run app.py
 ```
 
 ---
 
-## Deployment — Free on Streamlit Cloud
-
-1. Push this repo to GitHub
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Connect your GitHub repo
-4. Set main file: `app.py`
-5. Click **Deploy** — live URL in 2 minutes!
-
----
-
-## PSX Stocks Covered
-
-`ENGRO` `HBL` `LUCK` `PSO` `OGDC` `UBL` `MCB` `HUBC` `PPL` `MARI` `MEBL` `BAFL` `EFERT` `FFC` `KOHC`
-
----
-
-## Alert Levels
+## 📁 Project Structure
 
 ```
-🔴 HIGH    — 3/3 detectors flagged
-🟡 MEDIUM  — 2/3 detectors flagged
-🟢 LOW     — 1/3 detectors flagged
+PSX-Stock-Market-Anomaly-Detector/
+│
+├── app_simple.py        # ← Simple app (this README)
+├── app.py               # Advanced Bloomberg Terminal UI
+├── main.py              # CLI pipeline runner
+│
+├── psx_scraper.py       # Fetches PSX data (live + synthetic fallback)
+├── anomaly_detector.py  # Isolation Forest + Z-Score + Pump & Dump
+├── predictor.py         # 7-day price forecast (Linear Regression)
+├── visualizer.py        # Chart generator
+├── alert_system.py      # Alert printer and report saver
+│
+└── requirements.txt     # Python dependencies
 ```
 
 ---
 
-## CV Description
+## 🤖 How the AI Works
 
-> Built a real-time AI anomaly detection system for Pakistan Stock Exchange (PSX) monitoring 15 major stocks. Implemented Isolation Forest, Z-Score, and rule-based pump & dump detection with 7-day price forecasting using Linear Regression on 12 technical indicators. Deployed as an interactive Streamlit web application with live alerts and heatmap visualization.
+### 📡 Data
+The app first tries to fetch **live quotes** from PSX's official API. If unavailable, it generates **realistic synthetic data** using price simulation — so it always works even offline.
+
+### 🔍 Anomaly Detection (3 methods)
+| Method | What it does |
+|---|---|
+| 🌲 Isolation Forest | ML model that finds unusual trading days |
+| 📐 Z-Score | Flags returns or volume more than 3× normal |
+| 🚨 Pump & Dump | Detects sudden price surge + high volume together |
+
+### 🔮 7-Day Forecast
+Uses **Linear Regression** on 7 technical indicators (RSI, Bollinger Bands, volume ratio, moving averages) to predict the next week's price movement.
+
+### 🚦 Alert Levels
+| Level | Meaning |
+|---|---|
+| 🔴 High | Something very unusual happened — check immediately |
+| 🟡 Medium | Something a bit unusual — keep an eye on it |
+| 🟢 Low | Minor irregularity — just for your information |
 
 ---
 
-## Tech Stack
+## 📊 Features Explained Simply
 
-`Python` `scikit-learn` `pandas` `numpy` `matplotlib` `Streamlit` `requests` `Isolation Forest` `RSI` `Bollinger Bands`
+**RSI (Relative Strength Index)**
+- Below 30 = Stock fell too much (❄️ Too Cold) — might go up soon
+- Above 70 = Stock rose too much (🔥 Too Hot) — might fall soon
+- 30–70 = Normal (✅)
+
+**Volume Ratio**
+- How much more trading happened today vs the average
+- 2.5× or more = Unusual — something big might be happening
+
+**Pump & Dump**
+- When someone buys a lot to push the price up (Pump 🔺) then sells everything (Dump 🔻)
+- Our AI detects this pattern automatically
 
 ---
 
-⚠️ *Educational purposes only. Not financial advice.*
+## ⚙️ Requirements
+
+```
+pandas==2.0.3
+numpy==1.24.3
+scikit-learn==1.3.0
+matplotlib==3.7.2
+scipy==1.11.1
+streamlit==1.28.0
+requests==2.31.0
+beautifulsoup4==4.12.2
+plotly
+```
+
+---
+
+## ☁️ Live Demo
+
+Deployed on Streamlit Cloud — free and accessible worldwide.
+
+🔗 **[Click here to open the app](https://psx-stock-market-anomaly-detector.streamlit.app/)**
+
+*(Replace this link with your actual Streamlit Cloud URL after deploying)*
+
+---
+
+## ⚠️ Important Disclaimer
+
+> **This project is for EDUCATIONAL and RESEARCH purposes ONLY.**
+>
+> - It does **NOT** provide financial advice
+> - Stock predictions shown are **AI guesses**, not guarantees
+> - Past patterns do **NOT** guarantee future results
+> - **Never invest real money** based on this tool alone
+> - Always consult a **licensed financial advisor** before investing
+>
+> The creator of this project takes **no responsibility** for any financial decisions made using this tool.
+
+---
+
+## 👩‍💻 Built By
+
+**Sidra** — Pakistani developer building tools for the local community 🇵🇰
+
+If you found this helpful, please ⭐ star the repo!
+
+---
+
+## 📄 License
+
+MIT License — free to use, modify, and share.
