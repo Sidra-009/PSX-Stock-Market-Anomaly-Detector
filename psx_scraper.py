@@ -94,11 +94,13 @@ def generate_synthetic_stock(ticker: str, days: int = 365) -> pd.DataFrame:
     vol    = np.random.uniform(0.012, 0.022)
     shocks = np.random.normal(drift, vol, n)
 
-    n_events = np.random.randint(2, 5)
+    # Only inject pump/dump events if there's enough room in the data
+    margin = 20
+    n_events = np.random.randint(1, 3) if n > margin * 2 + 10 else 0
     pump_days = []
     for _ in range(n_events):
-        idx  = np.random.randint(20, n - 20)
-        pump = np.random.randint(3, 8)
+        idx  = np.random.randint(margin, max(margin + 1, n - margin))
+        pump = np.random.randint(2, min(6, max(3, n - idx - 2)))
         pump_days.append(idx)
         for j in range(pump):
             if idx + j < n:
