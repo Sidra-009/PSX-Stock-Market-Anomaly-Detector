@@ -59,8 +59,8 @@ This is a **beginner-friendly** stock monitoring dashboard for the Pakistan Stoc
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/Sidra-009/PSX-Stock-Market-Anomaly-Detector.git
-cd PSX-Stock-Market-Anomaly-Detector
+git clone https://github.com/Sidra-009/PSX-stock-market-anomaly-detector.git
+cd PSX-stock-market-anomaly-detector
 ```
 
 ### 2. Install dependencies
